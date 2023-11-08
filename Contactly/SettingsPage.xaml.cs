@@ -13,23 +13,23 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// Die Elementvorlage "Leere Seite" wird unter https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x407 dokumentiert.
+// Die Elementvorlage "Leere Seite" wird unter https://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
 
 namespace Contactly
 {
     /// <summary>
     /// Eine leere Seite, die eigenständig verwendet oder zu der innerhalb eines Rahmens navigiert werden kann.
     /// </summary>
-    public sealed partial class MainPage : Page
+    public sealed partial class SettingsPage : Page
     {
-        public MainPage()
+        public SettingsPage()
         {
             this.InitializeComponent();
         }
-        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        private void MainPage_Click(object sender, RoutedEventArgs e)
         {
             // Ihr Code, um zu den Einstellungen zu navigieren
-            Frame.Navigate(typeof(SettingsPage));
+            Frame.Navigate(typeof(MainPage));
         }
     }
 }
