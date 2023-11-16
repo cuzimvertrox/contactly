@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
+﻿using Contactly.Controller;
+using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
 namespace Contactly
@@ -37,7 +28,7 @@ namespace Contactly
         /// werden z. B. verwendet, wenn die Anwendung gestartet wird, um eine bestimmte Datei zu öffnen.
         /// </summary>
         /// <param name="e">Details über Startanforderung und -prozess.</param>
-        protected override void OnLaunched(LaunchActivatedEventArgs e)
+        protected override async void OnLaunched(LaunchActivatedEventArgs e)
         {
             Frame rootFrame = Window.Current.Content as Frame;
 
@@ -71,6 +62,9 @@ namespace Contactly
                 // Sicherstellen, dass das aktuelle Fenster aktiv ist
                 Window.Current.Activate();
             }
+
+            InitController initController = new InitController();
+            await initController.InitializeAsync();
         }
 
         /// <summary>
@@ -96,5 +90,6 @@ namespace Contactly
             //TODO: Anwendungszustand speichern und alle Hintergrundaktivitäten beenden
             deferral.Complete();
         }
+
     }
 }
