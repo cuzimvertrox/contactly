@@ -8,6 +8,12 @@ namespace Contactly.Controller
 {
     public class ConfigController
     {
+        // Die Datenklasse für die Konfiguration
+        public class AppConfig
+        {
+            public string VcfFolderPath { get; set; }
+        }
+
         private const string ConfigFileName = "config.json";
 
         // Der vollständige Pfad zur Konfigurationsdatei
@@ -20,6 +26,8 @@ namespace Contactly.Controller
             {
                 string appDataFolderPath = ApplicationData.Current.LocalFolder.Path;
                 string settingsFolderPath = Path.Combine(appDataFolderPath, "Settings");
+                string documentsFolderPath = Path.Combine("Ex.: " + Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Contactly\\Kontakte");
+
 
                 // Überprüfen, ob der "Settings"-Ordner vorhanden ist, andernfalls erstellen
                 if (!Directory.Exists(settingsFolderPath))
@@ -30,16 +38,20 @@ namespace Contactly.Controller
                 // Überprüfen, ob die Konfigurationsdatei vorhanden ist, andernfalls erstellen
                 if (!File.Exists(ConfigFilePath))
                 {
-                    var defaultConfig = new AppConfig { VcfFolderPath = string.Empty };
+                    var defaultConfig = new AppConfig { VcfFolderPath = documentsFolderPath };
                     string defaultConfigJson = JsonConvert.SerializeObject(defaultConfig);
                     File.WriteAllText(ConfigFilePath, defaultConfigJson);
                 }
+
+                // Überprüfen, ob der "Contactly"-Stanmdardordner vorhanden ist, andernfalls erstellen
             }
             catch (Exception ex)
             {
                 // Behandeln Sie Ausnahmen, die während des Erstellungsprozesses auftreten können
                 Console.WriteLine($"Fehler beim Erstellen der Konfigurationsdatei: {ex.Message}");
             }
+
+
         }
 
         // Überprüft, ob die Konfigurationsdatei vorhanden ist
@@ -106,11 +118,5 @@ namespace Contactly.Controller
             string appDataFolderPath = ApplicationData.Current.LocalFolder.Path;
             return Path.Combine(appDataFolderPath, "Settings");
         }
-    }
-
-    // Die Datenklasse für die Konfiguration
-    public class AppConfig
-    {
-        public string VcfFolderPath { get; set; }
     }
 }
