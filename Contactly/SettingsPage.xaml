@@ -13,7 +13,10 @@
         <!-- Hintergrundfarbe wie auf der linken Seite der Hauptseite -->
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+            <!-- Zeile für den Pfad -->
+            <RowDefinition Height="Auto" />
+            <!-- Zeile für Zurücksetzen -->
         </Grid.RowDefinitions>
 
         <!-- Header-Bereich -->
@@ -38,10 +41,16 @@
         <!-- Inhaltsbereich -->
         <StackPanel Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="100,20,40,0">
             <TextBlock Text="Speicherort der Kontaktdateien:" FontSize="18" FontWeight="Normal" Margin="0,0,0,10" />
-            <StackPanel Orientation="Horizontal">
+            <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
                 <TextBox x:Name="ContactFilePathTextBlock" IsReadOnly="True" Width="600" VerticalAlignment="Center" Margin="0,0,20,0" />
                 <Button Content="Durchsuchen" Width="auto" VerticalAlignment="Center" Click="BrowseButton_Click"/>
             </StackPanel>
+        </StackPanel>
+
+        <!-- Zurücksetzen-Element -->
+        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Margin="100,10,40,0">
+            <TextBlock Text="Zurücksetzen:" FontSize="18" FontWeight="Normal" Margin="0,0,0,10" />
+            <Button Content="Werkseinstellungen" Width="auto" VerticalAlignment="Center" Click="ResetButton_Click" Foreground="#6e0811"/>
         </StackPanel>
 
         <!-- Benachrichtigungsbanner -->

@@ -82,7 +82,7 @@ namespace Contactly
 
 
         // Diese Methode blendet den Benachrichtigungsbanner aus
-        private async void HideNotificationBanner()
+        private void HideNotificationBanner()
         {
             // Animation für das Ausblenden des Banners
             var fadeOutAnimation = new DoubleAnimation()
@@ -111,14 +111,38 @@ namespace Contactly
             ShowNotificationBanner();
         }
 
-
-
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Löschen Sie die Konfigurationsdatei
+            configController.DeleteConfigFile();
+            // Setzen Sie das TextBlock zurück
+            ContactFilePathTextBlock.Text = string.Empty;
+            // Zeigen Sie die Erfolgsmeldung an
+        }
 
         // Diese Methode wird aufgerufen, wenn auf die Schaltfläche "Zurück" geklickt wird
         private void MainPage_Click(object sender, RoutedEventArgs e)
         {
             // Ihr Code, um zur Hauptseite zu navigieren
             Frame.Navigate(typeof(MainPage));
+        }
+        private async void ResetButton_Click(object sender, RoutedEventArgs e)
+        {
+            string contactFilePath = await configController.GetSelectedPathAsync();
+            // Konfigurationsdatei löschen
+            configController.DeleteConfigFile();
+
+            // Konfigurationsdatei neu erstellen
+            configController.CreateConfigFileIfNotExists();
+            contactFilePath = await configController.GetSelectedPathAsync();
+
+            // Rendern der Anzeige mit dem neuen Pfad
+            ContactFilePathTextBlock.Text = contactFilePath;
+
+
+
+            // Zeigen Sie den Benachrichtigungsbanner an
+
         }
     }
 }
