@@ -25,9 +25,9 @@
             <Image Source="Assets/Logo_Contactly.png" HorizontalAlignment="Center" VerticalAlignment="Top" Width="180" Margin="0,80,0,20"/>
 
             <StackPanel VerticalAlignment="Center">
-                <Button Content="📖 Open Adressbook" HorizontalAlignment="Center" VerticalAlignment="Top" Width="240" CornerRadius="5"/>
-                <Button Content="📝 Create New Contact" HorizontalAlignment="Center" VerticalAlignment="Top" Width="240" CornerRadius="5" Margin="0,20,0,0"/>
-                <Button Content="👤About This App" HorizontalAlignment="Center" VerticalAlignment="Top" Width="240" CornerRadius="5" Margin="0,20,0,0"/>
+                <Button Content="📖 Adressbuch öffnen" HorizontalAlignment="Center" VerticalAlignment="Top" Width="240" CornerRadius="5"/>
+                <Button Content="📝 Neuen Kontakt anlegen" HorizontalAlignment="Center" VerticalAlignment="Top" Width="240" CornerRadius="5" Margin="0,20,0,0"/>
+                <Button Content="👤Über diese App" HorizontalAlignment="Center" VerticalAlignment="Top" Width="240" CornerRadius="5" Margin="0,20,0,0"/>
             </StackPanel>
 
             <Button Content="⚙" HorizontalAlignment="Right" VerticalAlignment="Bottom" Width="auto" CornerRadius="5" Margin="0,0,20,20" Click="SettingsButton_Click"/>
